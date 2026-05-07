@@ -1,6 +1,8 @@
 let p = document.querySelector("#searchResults");
 let input = document.querySelector("#searchInput");
 let button = document.querySelector("#searchButton");
+let details = document.querySelector("#contactDetails");
+
 
 let contacts = [
     { name: "Alice Johnson", number: "(54) 999123-4567", image: "./assets/alice-johnson.png" },
@@ -16,33 +18,33 @@ let contacts = [
     { name: "Michael Jackson", number: "(54) 999123-4577", image: "./assets/michael-jackson.png" }
 ];
 
-function createContactCard(contact) {
+function createContactCard(contact, index) {
     return `
     <div class="contact-card">
         <div class="left">
             <div class="avatar">
-                ${
-                    contact.image 
-                    ? `<img src="${contact.image}" alt="${contact.name}">`
-                    : contact.name.charAt(0)
-                }
+                ${contact.image
+            ? `<img src="${contact.image}" alt="${contact.name}">`
+            : contact.name.charAt(0)
+        }
             </div>
             <div class="info">
                 <h3>${contact.name}</h3>
                 <p>${contact.number}</p>
             </div>
         </div>
-        <button class="btn-ver">Ver</button>
+        <button class="btn-ver" data-index="${index}">Ver</button>
     </div>
     `;
 }
+
 
 
 button.addEventListener("click", function () {
     const busca = input.value.toLowerCase().trim();
 
     if (busca === "todos os contatos" || busca === "todos" || busca === "contatos") {
-        const allContacts = contacts.map(contact => createContactCard(contact)).join("");
+        const allContacts = contacts.map((contact, index) => createContactCard(contact, index)).join("");
         p.innerHTML = allContacts;
 
     } else {
@@ -55,10 +57,37 @@ button.addEventListener("click", function () {
         }
 
         if (results.length > 0) {
-            p.innerHTML = results.map(contact => createContactCard(contact)).join("");
+            p.innerHTML = results.map(contact => {
+                const realIndex = contacts.indexOf(contact);
+                return createContactCard(contact, realIndex);
+            }).join("");
         } else {
             p.innerHTML = "<p>Nenhum contato encontrado. Tente Novamente</p>";
         }
     }
 });
 
+p.addEventListener("click", function(event) {
+    if (event.target.classList.contains("btn-ver")) {
+        const index = event.target.dataset.index;
+        const contact = contacts[index];
+
+        p.innerHTML = `
+            <div class="details-card">
+                <img src="${contact.image}" alt="${contact.name}">
+                <h2>${contact.name}</h2>
+                <p>${contact.number}</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+                <button id="btnVoltar">Voltar</button>
+            </div>
+        `;
+    }
+});
+
+p.addEventListener("click", function(event) {
+    if (event.target.id === "btnVoltar") {
+        const allContacts = contacts.map((contact, index) => createContactCard(contact, index)).join("");
+        p.innerHTML = allContacts;
+    }
+});
