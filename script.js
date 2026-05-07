@@ -117,7 +117,7 @@ button.addEventListener("click", function () {
                 return createContactCard(contact, realIndex);
             }).join("");
         } else {
-            p.innerHTML = "<p>Nenhum contato encontrado. Tente Novamente</p>";
+            p.innerHTML = "<p>Nenhum contato encontrado. Tente Novamente ou digite \"Todos\" para ver todos os contatos.</p>";
         }
     }
 });
