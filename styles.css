@@ -272,3 +272,60 @@ body::after {
   transform: none;
 }
 
+.contact-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #ffffffcc;
+    backdrop-filter: blur(8px);
+    border-radius: 16px;
+    padding: 15px 20px;
+    margin: 10px 0;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.avatar {
+    width: 45px;
+    height: 45px;
+    background: #3b82f6;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.info h3 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.info p {
+    margin: 0;
+    color: #555;
+    font-size: 14px;
+}
+
+.btn-ver {
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
