@@ -13,14 +13,12 @@
   --shadow-brand: 0 20px 50px -20px rgba(13, 59, 102, 0.4);
 }
 
-/* ---------- BACKGROUND MODERNO ---------- */
 body {
   min-height: 100vh;
   color: var(--brand-700);
   position: relative;
   overflow-x: hidden;
 
-  /* camadas: blobs de cor + grid sutil + base em gradiente diagonal */
   background:
     radial-gradient(circle at 15% 20%, rgba(58, 163, 217, 0.35), transparent 45%),
     radial-gradient(circle at 85% 10%, rgba(13, 59, 102, 0.30), transparent 50%),
@@ -29,7 +27,6 @@ body {
   background-attachment: fixed;
 }
 
-/* grid decorativo por cima do gradiente */
 body::before {
   content: "";
   position: fixed;
@@ -44,7 +41,6 @@ body::before {
   z-index: 0;
 }
 
-/* brilho/orbe flutuante no canto */
 body::after {
   content: "";
   position: fixed;
@@ -65,14 +61,12 @@ body::after {
   50%      { transform: translate(-30px, 40px); }
 }
 
-/* garante que o conteúdo fique acima das camadas do background */
 .header,
 .container {
   position: relative;
   z-index: 1;
 }
 
-/* ---------- HEADER ---------- */
 .header {
   display: flex;
   align-items: center;
@@ -103,7 +97,6 @@ body::after {
   font-weight: bold;
 }
 
-/* ---------- CONTAINER ---------- */
 .container {
   max-width: 640px;
   margin: 140px auto 64px;
@@ -120,7 +113,6 @@ body::after {
   margin-bottom: 8px;
 }
 
-/* ---------- CARDS (efeito glass) ---------- */
 .contact-card {
   width: 100%;
   display: flex;
@@ -164,8 +156,6 @@ body::after {
   color: var(--brand-300);
 }
 
-/* ---------- BOTÃO ---------- */
-/* ---------- INPUT ---------- */
 #searchInput {
   width: 100%;
   padding: 14px 18px;
@@ -199,7 +189,6 @@ body::after {
   transform: translateY(-1px);
 }
 
-/* ---------- BUTTON ---------- */
 #searchButton{
   position: relative;
   display: inline-flex;
@@ -224,7 +213,6 @@ body::after {
   overflow: hidden;
 }
 
-/* Brilho deslizante no hover */
 #searchButton:hover::before {
   content: "";
   position: absolute;
@@ -395,4 +383,43 @@ body::after {
         opacity: 1;
         transform: translateY(0);
     }
+}
+.footer {
+    width: 100%;
+    text-align: center;
+    padding: 18px 0;
+    
+    background: linear-gradient(135deg, rgba(13, 59, 102, 0.85), rgba(58, 163, 217, 0.7));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    color: #fff;
+    font-size: 14px;
+    letter-spacing: 0.3px;
+
+    position: fixed;
+    bottom: 0;
+    left: 0;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+
+    box-shadow: 
+        0 -5px 20px rgba(13, 59, 102, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+
+    z-index: 2;
+}
+
+.footer p {
+    margin: 0;
+    opacity: 0.9;
+}
+
+.footer:hover {
+    opacity: 1;
+    transform: translateY(-2px);
+    transition: 0.3s ease;
+}
+body {
+    padding-bottom: 70px;
 }
