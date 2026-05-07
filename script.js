@@ -5,17 +5,72 @@ let details = document.querySelector("#contactDetails");
 
 
 let contacts = [
-    { name: "Alice Johnson", number: "(54) 999123-4567", image: "./assets/alice-johnson.png" },
-    { name: "Bob Smith", number: "(54) 999123-4568", image: "./assets/bob-smith.png" },
-    { name: "Charlie Brown", number: "(54) 999123-4569", image: "./assets/charlie-brown.png" },
-    { name: "David Wilson", number: "(54) 999123-4570", image: "./assets/david-wilson.png" },
-    { name: "Eve Davis", number: "(54) 999123-4571", image: "./assets/eve-davis.png" },
-    { name: "Frank Miller", number: "(54) 999123-4572", image: "./assets/frank-miller.png" },
-    { name: "Grace Lee", number: "(54) 999123-4573", image: "./assets/grace-lee.png" },
-    { name: "Hank Taylor", number: "(54) 999123-4574", image: "./assets/hank-taylor.png" },
-    { name: "Ivy Anderson", number: "(54) 999123-4575", image: "./assets/ivy-anderson.png" },
-    { name: "Jack Thomas", number: "(54) 999123-4576", image: "./assets/jack-thomas.png" },
-    { name: "Michael Jackson", number: "(54) 999123-4577", image: "./assets/michael-jackson.png" }
+    {
+        name: "Alice Johnson",
+        number: "(54) 999123-4567",
+        image: "./assets/alice-johnson.png",
+        description: "Designer criativa especializada em interfaces modernas."
+    },
+    {
+        name: "Bob Smith",
+        number: "(54) 999123-4568",
+        image: "./assets/bob-smith.png",
+        description: "Desenvolvedor backend com foco em performance."
+    },
+    {
+        name: "Charlie Brown",
+        number: "(54) 999123-4569",
+        image: "./assets/charlie-brown.png",
+        description: "Analista de sistemas com experiência em grandes projetos."
+    },
+    {
+        name: "David Wilson",
+        number: "(54) 999123-4570",
+        image: "./assets/david-wilson.png",
+        description: "Especialista em segurança da informação."
+    },
+    {
+        name: "Eve Davis",
+        number: "(54) 999123-4571",
+        image: "./assets/eve-davis.png",
+        description: "Gerente de projetos focada em resultados ágeis."
+    },
+    {
+        name: "Frank Miller",
+        number: "(54) 999123-4572",
+        image: "./assets/frank-miller.png",
+        description: "Engenheiro de software com paixão por arquitetura de sistemas."
+    },
+    {
+        name: "Grace Lee",
+        number: "(54) 999123-4573",
+        image: "./assets/grace-lee.png",
+        description: "UX/UI Designer focada em experiência do usuário e usabilidade."
+    },
+    {
+        name: "Hank Taylor",
+        number: "(54) 999123-4574",
+        image: "./assets/hank-taylor.png",
+        description: "Administrador de redes com experiência em infraestrutura."
+    },
+    {
+        name: "Ivy Anderson",
+        number: "(54) 999123-4575",
+        image: "./assets/ivy-anderson.png",
+        description: "Especialista em marketing digital e crescimento de marcas."
+    },
+    {
+        name: "Jack Thomas",
+        number: "(54) 999123-4576",
+        image: "./assets/jack-thomas.png",
+        description: "Desenvolvedor front-end apaixonado por interfaces interativas."
+    },
+    {
+        name: "Michael Jackson",
+        number: "(54) 999123-4577",
+        image: "./assets/michael-jackson.png",
+        description: "Consultor de negócios com foco em inovação e estratégia."
+    }
 ];
 
 function createContactCard(contact, index) {
@@ -67,7 +122,7 @@ button.addEventListener("click", function () {
     }
 });
 
-p.addEventListener("click", function(event) {
+p.addEventListener("click", function (event) {
     if (event.target.classList.contains("btn-ver")) {
         const index = event.target.dataset.index;
         const contact = contacts[index];
@@ -77,7 +132,7 @@ p.addEventListener("click", function(event) {
                 <img src="${contact.image}" alt="${contact.name}">
                 <h2>${contact.name}</h2>
                 <p>${contact.number}</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <p>${contact.description}</p>
 
                 <button id="btnVoltar">Voltar</button>
             </div>
@@ -85,7 +140,7 @@ p.addEventListener("click", function(event) {
     }
 });
 
-p.addEventListener("click", function(event) {
+p.addEventListener("click", function (event) {
     if (event.target.id === "btnVoltar") {
         const allContacts = contacts.map((contact, index) => createContactCard(contact, index)).join("");
         p.innerHTML = allContacts;
